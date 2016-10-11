@@ -1,0 +1,107 @@
+* {
+  margin-left: 3%;
+  margin-right: 5%;
+
+}
+
+.slash {
+  height: 10px;
+  background: url('img/hrborder.png');
+  transform: scale(1,1.5);
+  repeat-x 0 0;
+  border: 0;
+}
+
+
+div.header {
+  font-family: 'Oswald';
+  margin-right: 12%;
+  margin-top:30px;
+}
+
+.icons {
+  float: right;
+  /*padding-right: 50px;*/
+  display: inline-flex;
+  /*padding: -20;*/
+  margin-top: -30px;
+  /*margin-right: 110px;*/
+  padding-right: 15px;
+  font-size: 0;
+}
+
+h6 {
+  font-variant: small-caps;
+  font-size: 15px;
+  color: #d7d7d7;
+
+
+}
+
+.headfoot1 {
+  /*text-align: left;*/
+
+}
+
+.headfoot2 {
+  padding-left: 500px;
+}
+
+.instructions {
+  font-family: 'Cormorant Garamond', sans-serif;
+  font-size: 18px;
+  /*font-weight: lighter;*/
+  text-shadow: 5px 2px 30px rgba(150, 150, 150, 0.5);
+}
+
+.title {
+  text-align: left;
+}
+
+.list {
+  background-image: url('img/list-bg.png');
+  background-size: cover;
+  background-repeat: round;
+  border-top: 1px solid #f1f1f1;
+  font-size: 18px;
+  font-family: 'Coming Soon';
+  letter-spacing: 3px;
+}
+
+.delicious {
+  font-family: 'Yellowtail';
+  font-size: 35px;
+  margin-left: -30px;
+  /*margin-top: -100;*/
+}
+
+.foodblog {
+  font-size: 8px;
+  margin-left: -30px;
+  display: flex;
+  font-variant: small-caps;
+  margin-top:-8px;
+  margin-left: -14px;
+}
+
+.line1 {
+  max-width: 45%;
+  text-decoration: line-through;
+}
+
+.line2 {
+  width: 45%;
+  text-decoration: line-through;
+}
+
+.column {
+  width: 400px;
+  padding-left: 5%;
+
+}
+
+.column2 {
+  width: 400px;
+  padding-left: 5%;
+  text-decoration: line-through;
+}
