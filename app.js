@@ -32,7 +32,7 @@ if (fromLocalStorage){
   new Images ('img/pet-sweep.jpg', 'pet-sweep');
   new Images ('img/scissors.jpg', 'scissors');
   new Images ('img/shark.jpg', 'shark');
-  new Images ('img/sweep.jpg', 'sweep');
+  new Images ('img/sweep.jng', 'sweep');
   new Images ('img/tauntaun.jpg', 'tauntaun');
   new Images ('img/unicorn.jpg', 'unicorn');
   new Images ('img/usb.jpg', 'usb');
