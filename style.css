@@ -1,107 +1,47 @@
-* {
-  margin-left: 3%;
-  margin-right: 5%;
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"> </script>
+    <title>Bus Mall</title>
+  </head>
+  <body>
+    <main>
 
-}
-
-.slash {
-  height: 10px;
-  background: url('img/hrborder.png');
-  transform: scale(1,1.5);
-  repeat-x 0 0;
-  border: 0;
-}
-
-
-div.header {
-  font-family: 'Oswald';
-  margin-right: 12%;
-  margin-top:30px;
-}
-
-.icons {
-  float: right;
-  /*padding-right: 50px;*/
-  display: inline-flex;
-  /*padding: -20;*/
-  margin-top: -30px;
-  /*margin-right: 110px;*/
-  padding-right: 15px;
-  font-size: 0;
-}
-
-h6 {
-  font-variant: small-caps;
-  font-size: 15px;
-  color: #d7d7d7;
+      <h1>Welcome to the Bus Mall Questionaire</h1>
+      <h2>Please pick the product you are most interested in <cite>purchasing.</cite></h2>
 
 
-}
+      <button id="reset">Reset Counter</button>
+      <button id="refresh">Refresh Page</button>
 
-.headfoot1 {
-  /*text-align: left;*/
+      <div id="wrapper">
 
-}
+      <div id="holderLeft">
+        <img src=" " id="left"alt=" "  height="300px" width="300px;" />
+      </div>
 
-.headfoot2 {
-  padding-left: 500px;
-}
+      <div id="holderCenter">
+        <img src=" " id="center" alt=" "  height="300px" width="300px;"/>
+      </div>
 
-.instructions {
-  font-family: 'Cormorant Garamond', sans-serif;
-  font-size: 18px;
-  /*font-weight: lighter;*/
-  text-shadow: 5px 2px 30px rgba(150, 150, 150, 0.5);
-}
+      <div id="holderRight">
+        <img src=" " id="right" alt=" " height="300px" width="300px;"/>
+      </div>
 
-.title {
-  text-align: left;
-}
 
-.list {
-  background-image: url('img/list-bg.png');
-  background-size: cover;
-  background-repeat: round;
-  border-top: 1px solid #f1f1f1;
-  font-size: 18px;
-  font-family: 'Coming Soon';
-  letter-spacing: 3px;
-}
+    </div>
 
-.delicious {
-  font-family: 'Yellowtail';
-  font-size: 35px;
-  margin-left: -30px;
-  /*margin-top: -100;*/
-}
 
-.foodblog {
-  font-size: 8px;
-  margin-left: -30px;
-  display: flex;
-  font-variant: small-caps;
-  margin-top:-8px;
-  margin-left: -14px;
-}
+    <canvas id="canvas" width="800" height="600"></canvas>
+    </main>
+    <ul id ="results">
 
-.line1 {
-  max-width: 45%;
-  text-decoration: line-through;
-}
+    </ul>
+  </body>
 
-.line2 {
-  width: 45%;
-  text-decoration: line-through;
-}
+  <script src="app.js">
 
-.column {
-  width: 400px;
-  padding-left: 5%;
-
-}
-
-.column2 {
-  width: 400px;
-  padding-left: 5%;
-  text-decoration: line-through;
-}
+  </script>
+</html>
