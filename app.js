@@ -1,4 +1,5 @@
 'use strict';
+
 var counter = 0;  //click counter set to 0
 
 var resultList = document.getElementById('results');
@@ -66,7 +67,7 @@ function displayImage (){   //4. Now Access -- function that displays the pictur
   //don't show any duplicate code!
   var leftPicture = randomNumberGenerator();
   while (leftPicture === previousArray[0] || leftPicture === previousArray[1] || leftPicture === previousArray[2])
-    {
+  {
     leftPicture = randomNumberGenerator();
 
   }
@@ -82,9 +83,9 @@ function displayImage (){   //4. Now Access -- function that displays the pictur
 
   var rightPicture = randomNumberGenerator();
   while (rightPicture === previousArray[0] || rightPicture === previousArray[1] || rightPicture === previousArray[2]
-  || rightPicture === leftPicture || rightPicture === centerPicture)
+    || rightPicture === leftPicture || rightPicture === centerPicture)
 
-  {
+    {
     rightPicture = randomNumberGenerator();
   }
   right.src = allImages[rightPicture].imgPath;
@@ -99,7 +100,7 @@ function displayImage (){   //4. Now Access -- function that displays the pictur
 
 displayImage(); //calling the function console.log(rightImg, pictureThree);here.
 
-// ***************************start the rotation process
+  //start the rotation process
 
 var rotateImages = document.getElementById('wrapper');
 rotateImages.addEventListener('click',changeThePicturesShown);  //this is the clicking of the camera
@@ -130,22 +131,29 @@ function changeThePicturesShown(event) {
   if (counter === 15) {
     rotateImages.removeEventListener('click', changeThePicturesShown);
     for (var j = 0; j < allImages.length; j++) {
-      // var percentageOfClicksPerView = (allImages[j].timeClicked / allImages[j].timesDisplayed) * 100;
-      // var recomended;
-      // if(percentageOfClicksPerView >= 20){
-      //   recomended === 'Yes';
-      // }else {
-      //   recomended === 'No';
-      // }
+      var percentageOfClicksPerView = (allImages[j].timeClicked / allImages[j].timesDisplayed) * 100;
+      function recomended(){
+        if(percentageOfClicksPerView >= 30){
+          return 'Yes';
+        }else {
+          return 'No';
+        }
+      }
       var lineElement = document.createElement('li');
-      lineElement.textContent = allImages[j].imgName + ' : Views ' + allImages[j].timesDisplayed + ' , ' + 'Clicks ' + allImages[j].timeClicked + ',% of clicks when viewed ' + ((allImages[j].timeClicked / allImages[j].timesDisplayed) * 100).toFixed(2) + '%';
+      lineElement.textContent = allImages[j].imgName + ' , ' + allImages[j].timesDisplayed + ' , ' + allImages[j].timeClicked + ' , ' + ((allImages[j].timeClicked / allImages[j].timesDisplayed) * 100).toFixed(2) + '%' + ' , ' + recomended();
       resultList.appendChild(lineElement);
       prepareData();
       drawChart();
     }
   }
 }
-
+// var percentageOfClicksPerView = (allImages[j].timeClicked / allImages[j].timesDisplayed) * 100;
+// var recomended;
+// if(percentageOfClicksPerView >= 20){
+//   recomended === 'Yes';
+// }else {
+//   recomended === 'No';
+// }
 
 var nameOfItemsAsShownOnChart = document.getElementById('canvas');
 var itemName = [];
