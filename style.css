@@ -1,0 +1,32 @@
+cite {
+  text-align: center;
+  color:red;
+  animation: blinker 1s linear infinite;
+}
+
+h1,h2{
+  text-align: center;
+  color: #8e2382;
+}
+
+
+@-webkit-keyframes blinker {
+  50% { opacity: 0; }
+}
+
+
+#wrapper {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+h1 {
+  font-family: sutro-deluxe-primary, sans-serif;
+  font-style: normal;
+
+}
+
+body{
+  background-color: #e0cb76;
+}
