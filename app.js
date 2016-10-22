@@ -147,6 +147,7 @@ function changeThePicturesShown(event) {
     }
   }
 }
+
 var nameOfItemsAsShownOnChart = document.getElementById('canvas');
 var itemName = [];
 var clicked = [];
