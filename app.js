@@ -147,14 +147,6 @@ function changeThePicturesShown(event) {
     }
   }
 }
-// var percentageOfClicksPerView = (allImages[j].timeClicked / allImages[j].timesDisplayed) * 100;
-// var recomended;
-// if(percentageOfClicksPerView >= 20){
-//   recomended === 'Yes';
-// }else {
-//   recomended === 'No';
-// }
-
 var nameOfItemsAsShownOnChart = document.getElementById('canvas');
 var itemName = [];
 var clicked = [];
@@ -170,7 +162,7 @@ var data = {
   datasets: [
     {
       data: clicked,
-      label: 'Clicks per tem',
+      label: 'Number of Clicks per Item',
       backgroundColor: '#8e2382',
     }]
 };
