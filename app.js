@@ -122,6 +122,7 @@ function changeThePicturesShown(event) {
       displayImage();
     }
   }
+
   var toLocalStorage = JSON.stringify(allImages);
   localStorage.setItem('allImages',toLocalStorage);
   counter += 1;
@@ -129,6 +130,13 @@ function changeThePicturesShown(event) {
   if (counter === 15) {
     rotateImages.removeEventListener('click', changeThePicturesShown);
     for (var j = 0; j < allImages.length; j++) {
+      // var percentageOfClicksPerView = (allImages[j].timeClicked / allImages[j].timesDisplayed) * 100;
+      // var recomended;
+      // if(percentageOfClicksPerView >= 20){
+      //   recomended === 'Yes';
+      // }else {
+      //   recomended === 'No';
+      // }
       var lineElement = document.createElement('li');
       lineElement.textContent = allImages[j].imgName + ' : Views ' + allImages[j].timesDisplayed + ' , ' + 'Clicks ' + allImages[j].timeClicked + ',% of clicks when viewed ' + ((allImages[j].timeClicked / allImages[j].timesDisplayed) * 100).toFixed(2) + '%';
       resultList.appendChild(lineElement);
