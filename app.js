@@ -130,7 +130,7 @@ function changeThePicturesShown(event) {
     rotateImages.removeEventListener('click', changeThePicturesShown);
     for (var j = 0; j < allImages.length; j++) {
       var lineElement = document.createElement('li');
-      lineElement.textContent = allImages[j].imgName + ' : Displayed/Clicked - ' + allImages[j].timesDisplayed + ' / ' + allImages[j].timeClicked;
+      lineElement.textContent = allImages[j].imgName + ' : Views/Clicks - ' + allImages[j].timesDisplayed + ' / ' + allImages[j].timeClicked;
       resultList.appendChild(lineElement);
       prepareData();
       drawChart();
