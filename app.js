@@ -3,20 +3,20 @@ var counter = 0;  //click counter set to 0
 
 var resultList = document.getElementById('results');
 
-var pictureGallery = []; //1. Create empty array
+var allImages = []; //1. Create empty array
 
-function Images (filepath, Whodis) {   //2. Constructor : Needs to be capital letter
-  this.Whodis = Whodis;
-  this.filepath = filepath;
+function Images (imgPath, imgName) {   //2. Constructor : Needs to be capital letter
+  this.imgName = imgName;
+  this.imgPath = imgPath;
   this.timeClicked = 0;
   this.timesDisplayed = 0;
-  pictureGallery.push(this);
+  allImages.push(this);
 }
 
 //3. Then create Object instances
-var fromLocalStorage = localStorage.getItem('pictureGallery');
+var fromLocalStorage = localStorage.getItem('allImages');
 if (fromLocalStorage){
-  pictureGallery = JSON.parse(fromLocalStorage);
+  allImages = JSON.parse(fromLocalStorage);
 } else {
   new Images ('img/bag.jpg', 'bag');
   new Images ('img/banana.jpg', 'banana');
@@ -48,20 +48,20 @@ function randomNumberGenerator () {
 function displayImage (){   //4. Now Access -- function that displays the pictures on page
   var previousArray = [];
 
-  var pictureOne = pictureGallery[randomNumberGenerator()]; //pulling the random number in
+  var pictureOne = allImages[randomNumberGenerator()]; //pulling the random number in
   var leftImg = document.getElementById('left');
-  leftImg.src = pictureOne.filepath;
-  leftImg.alt = pictureOne.Whodis;
+  leftImg.src = pictureOne.imgPath;
+  leftImg.alt = pictureOne.imgName;
 
-  var pictureTwo = pictureGallery[randomNumberGenerator()];
+  var pictureTwo = allImages[randomNumberGenerator()];
   var centerImg = document.getElementById('center');
-  centerImg.src = pictureTwo.filepath;
-  centerImg.alt = pictureTwo.Whodis;
+  centerImg.src = pictureTwo.imgPath;
+  centerImg.alt = pictureTwo.imgName;
 
-  var pictureThree = pictureGallery[randomNumberGenerator()];
+  var pictureThree = allImages[randomNumberGenerator()];
   var rightImg = document.getElementById('right');
-  rightImg.src = pictureThree.filepath;
-  rightImg.alt = pictureThree.Whodis;
+  rightImg.src = pictureThree.imgPath;
+  rightImg.alt = pictureThree.imgName;
 
   //don't show any duplicate code!
   var leftPicture = randomNumberGenerator();
@@ -70,7 +70,7 @@ function displayImage (){   //4. Now Access -- function that displays the pictur
     leftPicture = randomNumberGenerator();
 
   }
-  left.src = pictureGallery[leftPicture].filepath;
+  left.src = allImages[leftPicture].imgPath;
 
   var centerPicture = randomNumberGenerator();
   while (centerPicture === previousArray[0] || centerPicture === previousArray[1] || centerPicture === previousArray[2] || centerPicture === leftPicture)
@@ -78,7 +78,7 @@ function displayImage (){   //4. Now Access -- function that displays the pictur
   {
     centerPicture = randomNumberGenerator();
   }
-  center.src = pictureGallery[centerPicture].filepath;
+  center.src = allImages[centerPicture].imgPath;
 
   var rightPicture = randomNumberGenerator();
   while (rightPicture === previousArray[0] || rightPicture === previousArray[1] || rightPicture === previousArray[2]
@@ -87,11 +87,11 @@ function displayImage (){   //4. Now Access -- function that displays the pictur
   {
     rightPicture = randomNumberGenerator();
   }
-  right.src = pictureGallery[rightPicture].filepath;
+  right.src = allImages[rightPicture].imgPath;
 
-  pictureGallery[rightPicture].timesDisplayed += 1;
-  pictureGallery[centerPicture].timesDisplayed += 1;
-  pictureGallery[leftPicture].timesDisplayed += 1;
+  allImages[rightPicture].timesDisplayed += 1;
+  allImages[centerPicture].timesDisplayed += 1;
+  allImages[leftPicture].timesDisplayed += 1;
   previousArray.push(leftPicture);
   previousArray.push(centerPicture);
   previousArray.push(rightPicture);
@@ -116,21 +116,21 @@ function changeThePicturesShown(event) {
     alert('Please click on an image.');
   }
 
-  for (var i = 0; i < pictureGallery.length; i++) {
-    if(event.target.alt === pictureGallery[i].Whodis) {
-      pictureGallery[i].timeClicked += 1;
+  for (var i = 0; i < allImages.length; i++) {
+    if(event.target.alt === allImages[i].imgName) {
+      allImages[i].timeClicked += 1;
       displayImage();
     }
   }
-  var toLocalStorage = JSON.stringify(pictureGallery);
-  localStorage.setItem('pictureGallery',toLocalStorage);
+  var toLocalStorage = JSON.stringify(allImages);
+  localStorage.setItem('allImages',toLocalStorage);
   counter += 1;
   console.log(counter);
-  if (counter === 25) {
+  if (counter === 15) {
     rotateImages.removeEventListener('click', changeThePicturesShown);
-    for (var j = 0; j < pictureGallery.length; j++) {
+    for (var j = 0; j < allImages.length; j++) {
       var lineElement = document.createElement('li');
-      lineElement.textContent = pictureGallery[j].Whodis + ' : Displayed/Clicked - ' + pictureGallery[j].timesDisplayed + ' / ' + pictureGallery[j].timeClicked;
+      lineElement.textContent = allImages[j].imgName + ' : Displayed/Clicked - ' + allImages[j].timesDisplayed + ' / ' + allImages[j].timeClicked;
       resultList.appendChild(lineElement);
       prepareData();
       drawChart();
@@ -143,9 +143,9 @@ var nameOfItemsAsShownOnChart = document.getElementById('canvas');
 var itemName = [];
 var clicked = [];
 function prepareData(){
-  for (var i = 0; i < pictureGallery.length; i++) {
-    itemName[i] = pictureGallery[i].Whodis;
-    clicked[i] = pictureGallery[i].timeClicked;
+  for (var i = 0; i < allImages.length; i++) {
+    itemName[i] = allImages[i].imgName;
+    clicked[i] = allImages[i].timeClicked;
   }
 }
 
