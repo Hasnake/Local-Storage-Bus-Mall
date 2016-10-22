@@ -1,19 +1,19 @@
 'use strict';
-var counter = 0;
+var counter = 0;  //click counter set to 0
 
 var resultList = document.getElementById('results');
 
 var allImages = []; //1. Create empty array
 
-function Images (imgPath, imgName) {
-  this.imgName = imgName;
+function Images (imgPath, imgName) {   //2. Constructor : Needs to be capital letter
   this.imgPath = imgPath;
+  this.imgName = imgName;
   this.timeClicked = 0;
   this.timesDisplayed = 0;
   allImages.push(this);
 }
 
-//creating Object instances
+//3. Then create Object instances
 var fromLocalStorage = localStorage.getItem('allImages');
 if (fromLocalStorage){
   allImages = JSON.parse(fromLocalStorage);
@@ -42,37 +42,62 @@ if (fromLocalStorage){
 
 
 //generates random number from 1-19
-function randomIndex() {
+function randomNumberGenerator () {
   return Math.floor(Math.random() * allImages.length);
 }
+function displayImage (){   //4. Now Access -- function that displays the pictures on page
+  var previousArray = [];
 
-function displayImg() {
-  var leftImgIndex = randomIndex();
-  var centerImgIndex = randomIndex();
-  var rightImgIndex = randomIndex();
-
-  while (centerImgIndex === leftImgIndex) {
-    centerImgIndex = randomIndex();
-  }
-
-  while (rightImgIndex === centerImgIndex || rightImgIndex === leftImgIndex) {
-    rightImgIndex = randomIndex();
-  }
-
+  var pictureOne = allImages[randomNumberGenerator()]; //pulling the random number in
   var leftImg = document.getElementById('left');
-  leftImg.src = allImages[leftImgIndex].imgPath;
-  leftImg.alt = allImages[leftImgIndex].imgName;
+  leftImg.src = pictureOne.imgPath;
+  leftImg.alt = pictureOne.imgName;
 
+  var pictureTwo = allImages[randomNumberGenerator()];
   var centerImg = document.getElementById('center');
-  centerImg.src = allImages[centerImgIndex].imgPath;
-  centerImg.alt = allImages[centerImgIndex].imgName;
+  centerImg.src = pictureTwo.imgPath;
+  centerImg.alt = pictureTwo.imgName;
 
+  var pictureThree = allImages[randomNumberGenerator()];
   var rightImg = document.getElementById('right');
-  rightImg.src = allImages[rightImgIndex].imgPath;
-  rightImg.alt = allImages[rightImgIndex].imgName;
+  rightImg.src = pictureThree.imgPath;
+  rightImg.alt = pictureThree.imgName;
+
+  //don't show any duplicate code!
+  var leftPicture = randomNumberGenerator();
+  while (leftPicture === previousArray[0] || leftPicture === previousArray[1] || leftPicture === previousArray[2])
+    {
+    leftPicture = randomNumberGenerator();
+
+  }
+  left.src = allImages[leftPicture].imgPath;
+
+  var centerPicture = randomNumberGenerator();
+  while (centerPicture === previousArray[0] || centerPicture === previousArray[1] || centerPicture === previousArray[2] || centerPicture === leftPicture)
+
+  {
+    centerPicture = randomNumberGenerator();
+  }
+  center.src = allImages[centerPicture].imgPath;
+
+  var rightPicture = randomNumberGenerator();
+  while (rightPicture === previousArray[0] || rightPicture === previousArray[1] || rightPicture === previousArray[2]
+  || rightPicture === leftPicture || rightPicture === centerPicture)
+
+  {
+    rightPicture = randomNumberGenerator();
+  }
+  right.src = allImages[rightPicture].imgPath;
+
+  allImages[rightPicture].timesDisplayed += 1;
+  allImages[centerPicture].timesDisplayed += 1;
+  allImages[leftPicture].timesDisplayed += 1;
+  previousArray.push(leftPicture);
+  previousArray.push(centerPicture);
+  previousArray.push(rightPicture);
 }
 
-displayImg(); //calling the function console.log(rightImg, pictureThree);here.
+displayImage(); //calling the function console.log(rightImg, pictureThree);here.
 
 // ***************************start the rotation process
 
