@@ -140,7 +140,7 @@ function changeThePicturesShown(event) {
         }
       }
       var lineElement = document.createElement('li');
-      lineElement.textContent = allImages[j].imgName + ' , ' + allImages[j].timesDisplayed + ' , ' + allImages[j].timeClicked + ' , ' + ((allImages[j].timeClicked / allImages[j].timesDisplayed) * 100).toFixed(2) + '%' + ' , ' + recomended();
+      lineElement.textContent = allImages[j].imgName + ' , [views:' + allImages[j].timesDisplayed + ' , ' + 'clicks:' + allImages[j].timeClicked + ' , ' + '% of clicks when viewed:' + ((allImages[j].timeClicked / allImages[j].timesDisplayed) * 100).toFixed(2) + '%]' + ' , ' + 'Recommended? =' + recomended();
       resultList.appendChild(lineElement);
       prepareData();
       drawChart();
